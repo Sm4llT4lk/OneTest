@@ -1,0 +1,5 @@
+# Compiled binaries
+dll_demo
+
+# Object files
+*.o
