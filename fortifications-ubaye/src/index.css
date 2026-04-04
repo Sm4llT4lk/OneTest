@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ── */
+@layer base {
+  html, body, #root {
+    @apply h-full w-full overflow-hidden;
+  }
+
+  body {
+    @apply font-sans text-stone-800 bg-parchment-100;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  /* Touch-friendly tap targets */
+  button, a, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* ── Components ── */
+@layer components {
+  .form-label {
+    @apply block text-sm font-medium text-stone-700 mb-1;
+  }
+
+  .form-input {
+    @apply w-full px-3 py-2.5 bg-white border border-stone-300 rounded-lg text-stone-800
+           text-sm placeholder-stone-400 outline-none
+           focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20
+           transition-colors;
+  }
+
+  .form-input:disabled {
+    @apply bg-stone-50 text-stone-400 cursor-not-allowed;
+  }
+
+  select.form-input {
+    @apply appearance-none bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* ── Leaflet overrides ── */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  border: 1px solid #e7e5e4;
+  background: #fdf8f0;
+}
+
+.leaflet-popup-tip {
+  background: #fdf8f0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 14px !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid #d6d3d1 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.leaflet-control-zoom a {
+  background: white !important;
+  color: #44403c !important;
+  border-bottom: 1px solid #d6d3d1 !important;
+  font-size: 16px !important;
+  line-height: 28px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #f5f5f4 !important;
+}
+
+/* ── Animations ── */
+@layer utilities {
+  @keyframes slide-in {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0); }
+  }
+
+  @keyframes bounce-soft {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-4px); }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.25s ease-out;
+  }
+
+  .animate-bounce-soft {
+    animation: bounce-soft 2s ease-in-out infinite;
+  }
+
+  /* Line clamping */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
