@@ -1,0 +1,13 @@
+[build]
+  base    = "fortifications-ubaye"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA redirect — nécessaire pour React Router (/admin, etc.)
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
